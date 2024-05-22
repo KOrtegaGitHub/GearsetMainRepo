@@ -1,0 +1,96 @@
+<!--
+@description - AccountSearch Page dynamic searching for Account Object
+@author Kharla Haldos
+@date  July 20, 2016
+@history Kharla Haldos July 20, 2016 - AccountSearch
+-->
+<apex:page controller="AccountSearchController" tabStyle="Account_Search__tab" sidebar="false">
+<apex:sectionHeader title="Account Search" />
+    
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock mode="edit" title="Search Criteria" helpUrl="{!$Label.Account_HelpURL}" helpTitle="How To Search">
+        <apex:pageblockSection columns="4">
+            
+            <apex:panelGrid >
+                <apex:outputLabel value="{!$ObjectType.Account.fields.Name.label}"/>
+                <apex:inputText value="{!accNameStr}" required="false" id="accName"/>
+           </apex:panelGrid>
+            <apex:panelGrid rendered="{!$Setup.FilterFieldsSearch__c.Country__c}">
+                <apex:outputLabel value="Country"/>
+                <apex:inputText value="{!accCountryStr}" id="billingCountry"/>  
+            </apex:panelGrid>     
+            <apex:panelGrid rendered="{!$Setup.FilterFieldsSearch__c.ContactName__c}">
+                <apex:outputLabel value="Contact Name"/>
+                <apex:inputText value="{!conNameStr}" label="Contact Name" required="false" id="conName"/>
+            </apex:panelGrid>
+            <apex:panelGrid rendered="{!$Setup.FilterFieldsSearch__c.Type__c}">
+                <apex:outputLabel value="{!$ObjectType.Account.fields.Type.label}" for="type"/>
+                <apex:inputField value="{!accTypeStr.Type}" id="type"/>
+            </apex:panelGrid>
+
+        </apex:pageblockSection>
+
+        <div align = "right">
+            <apex:commandButton value="Find Accounts" id="accSearch" action="{!findAcc}" />
+        </div>
+  
+    </apex:pageBlock>
+    
+     <apex:pageBlock title="Search Results" id="default" rendered="{!accList.size==0}" >
+
+            <apex:outputPanel id="default">
+                <p><i>No matching records </i></p>
+            </apex:outputPanel>
+     </apex:pageBlock>
+     
+                <!--- Loading ---->
+                <apex:outputPanel >
+                    <apex:actionStatus id="fetchStatus">
+                        <apex:facet name="start">
+                            <p align="center"><img style='width:100px;height:100px' src="{!$Resource.LoadingIMG}" />&nbsp;Searching for matching Accounts...&nbsp;</p> 
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:outputPanel>
+                 <!--- Loading ---->
+                 
+     <apex:pageBlock title="Search Results" id="details" rendered="{!If(accList.size>0 && ShowDetails,true,false)}">           
+        <!-- <apex:pageBlockSection columns="1"> -->
+            <apex:pageBlockTable value="{!swList}" var="sw">
+                <apex:column width="30">
+                        <apex:facet name="header">Name</apex:facet>
+                        <apex:outputLink value="/{!sw.acctId}">{!sw.acctName}</apex:outputLink>         
+                </apex:column>
+                <apex:column width="30" value="{!sw.billingcountry}" headerValue="Billing Country"/> 
+                <apex:column width="30" value="{!sw.shippingcountry}" headerValue="Shipping Country"/> 
+                <apex:column width="30">
+                        <apex:facet name="header">Contact Name</apex:facet>
+                        <apex:outputLink value="/{!sw.contactID}">{!sw.contactName}</apex:outputLink>       
+                </apex:column>
+                <apex:column width="30" value="{!sw.type}" headerValue="Type"/>  
+                
+                <apex:column width="30" headerValue="Year Created">
+                    <apex:outputText value="{0,date,YYYY}">
+                        <apex:param value="{!sw.createdyear}" />
+                    </apex:outputText>
+                </apex:column>
+                
+            </apex:pageBlockTable> 
+        
+        <!--</apex:pageBlockSection>-->
+              
+            <apex:pageblockButtons location="bottom" >
+          
+                    <apex:outputPanel id="myButtons" >
+                            <apex:commandButton status="fetchStatus" action="{!firstPage}" disabled="{!DisabledPrevious}" value="<<" rerender="details" title="First Page"/>
+                            <apex:commandButton status="fetchStatus" action="{!previousPage}" disabled="{!DisabledPrevious}" value="< Previous" rerender="details" title="Previous Page"/>
+                            <apex:commandButton status="fetchStatus" action="{!nextPage}" disabled="{!DisableNext}" value="Next >" rerender="details" title="Next Page"/>
+                            <apex:commandButton status="fetchStatus" action="{!lastPage}" disabled="{!DisableNext}" value=">>" rerender="details" title="Last Page"/>
+                    </apex:outputPanel>   
+              
+            </apex:pageblockButtons>    
+     
+     </apex:pageBlock>
+         
+    </apex:form>
+</apex:page>

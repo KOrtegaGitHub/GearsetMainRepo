@@ -1,0 +1,15 @@
+<apex:page sidebar="false">
+
+    <!--
+    <div>
+        <apex:outputText >
+        <apex:param value="{!getHowToSearch}" />
+        </apex:outputText>
+    </div>
+    <apex:outputLabel >{!$Label.AccSearch_HelpURL}</apex:outputLabel>
+    <apex:outputLabel >{!$Label.AccSearch_HelpURL2}</apex:outputLabel>
+    
+    <apex:iframe src="{!$Resource.HowToSearch}"/>
+    -->
+    <apex:iframe src="{!$Resource.HowToSearch}"/>
+</apex:page>

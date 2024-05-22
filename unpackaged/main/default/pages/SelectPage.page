@@ -1,0 +1,33 @@
+<apex:page controller="SelectAllExt" id="selectPage">
+    <apex:form id="selectForm">
+        <apex:pageMessages />
+        <apex:pageBlock id="selectBlock">
+            
+            <apex:pageBlockTable value="{!caseList}" var="row" id="selectBlockTable">
+                
+                <apex:column width="20%" id="selectColumn">
+                    
+                    <apex:facet name="header">
+                         <input type="checkbox" id="checkAllBox" onchange="toggleCheckAll(this)"/> Select All
+                    </apex:facet>
+                    
+                  <apex:inputCheckbox styleClass="selectInput" value="{!row.Status}"/>
+                
+                </apex:column>
+                
+                <apex:column value="{!row.CaseNumber}"/>
+            
+            </apex:pageBlockTable>
+        
+        </apex:pageBlock>
+    
+    </apex:form>
+
+    <script>
+        function toggleCheckAll(id) {
+            var inputList = document.getElementsByClassName('selectInput');
+            for(var i=0;i<inputList.length;i++)
+                document.getElementsByClassName('selectInput')[i].checked = id.checked;
+        } 
+    </script>
+</apex:page>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label>
+            <!-- Property Type -->
+        </label>
+        <name>Property_Type__c</name>
+        <picklistValues>
+            <masterLabel>1 Bedroom</masterLabel>
+            <translation>
+                <!-- 1 Bedroom -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1 Bedroom + Study</masterLabel>
+            <translation>
+                <!-- 1 Bedroom + Study -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 Bedrooms</masterLabel>
+            <translation>
+                <!-- 2 Bedrooms -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 Bedrooms + Study</masterLabel>
+            <translation>
+                <!-- 2 Bedrooms + Study -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 Bedrooms</masterLabel>
+            <translation>
+                <!-- 3 Bedrooms -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 Bedrooms + Study</masterLabel>
+            <translation>
+                <!-- 3 Bedrooms + Study -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 Bedrooms</masterLabel>
+            <translation>
+                <!-- 4 Bedrooms -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 Bedrooms + Study</masterLabel>
+            <translation>
+                <!-- 4 Bedrooms + Study -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Penthouse</masterLabel>
+            <translation>
+                <!-- Penthouse -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Studio</masterLabel>
+            <translation>
+                <!-- Studio -->
+            </translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Terrace</masterLabel>
+            <translation>
+                <!-- Terrace -->
+            </translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,58 @@
+<!---
+@description ViewContactInfoInTabs - Display Contact Details with its related list
+@author Kharla Haldos
+@date  July 13, 2016
+@history Kharla Haldos July 11, 2016 - VF Page to View Contact Details
+-->
+<!--START of Page for Contact -->
+<apex:page standardController="Contact" sidebar="false" standardStylesheets="false">
+
+<apex:stylesheet value="{!$Resource.ContactTabs}"/> <!--Setting up the style for tabs-->
+
+    <apex:detail subject="{!Contact.Id}" relatedList="false" title="true"/>
+
+    <!-- @@ Start of Tab layout -->
+    <apex:tabPanel switchType="client" selectedTab="name2" id="theTabPanel">
+    
+        <apex:tab label="Subscriptions (Subscriber)" name="Subscriptions_Subscriber" id="tab1">
+            
+            <apex:relatedList list="Subscriptions1__r"/>
+        
+        </apex:tab>
+        
+        <apex:tab label="Subscriptions (Recipients)" name="Subscriptions_Recipients" id="tab2">
+        
+            <apex:relatedList list="Subscriptions__r" />
+            
+        </apex:tab>
+        
+        <apex:tab label="Open Activities" name="OpenActivities" id="tab3">
+        
+            <apex:relatedList list="OpenActivities" />
+        
+        </apex:tab>
+        
+        <apex:tab label="Activity History" name="ActivityHistories" id="tab4">
+       
+           <apex:relatedList list="ActivityHistories" />
+           
+        </apex:tab>
+        
+        <apex:tab label="Case" name="Cases" id="tab5">
+         
+           <apex:relatedList list="Cases" />
+              
+        </apex:tab>
+        
+        <apex:tab label="Notes & Attachments" name="CombinedAttachments" id="tab6">
+        
+            <apex:relatedList list="CombinedAttachments" />
+            
+        </apex:tab>
+        
+    </apex:tabPanel>
+    <!-- @@ End of Tab layout -->
+
+</apex:page>
+
+<!--START of Page for Contact -->

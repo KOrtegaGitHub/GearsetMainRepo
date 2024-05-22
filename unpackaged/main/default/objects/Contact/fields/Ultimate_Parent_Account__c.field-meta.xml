@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ultimate_Parent_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>a reference to the top most Account in the hierarchy based on the record given on the &quot;Account Name&quot; field.</description>
+    <externalId>false</externalId>
+    <label>Ultimate Parent Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Contacts</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

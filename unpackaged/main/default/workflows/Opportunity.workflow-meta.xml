@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Followup_for_created_Opp</fullName>
+        <description>Followup for created Opp</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>carla_haldos@yahoo.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Custom_Email_template</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_user_for_new_Opp_created</fullName>
+        <ccEmails>kharlaortega21@gmail.com</ccEmails>
+        <description>Notify user for new Opp created</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>integration@00d28000001o74seac.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>loginas@yahoo.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>carla_haldos@yahoo.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Email_Notification_for_New_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Email_Notif_upon_Opp_Creation</fullName>
+        <ccEmails>kharlaortega21@gmail.com</ccEmails>
+        <description>Send Email Notif upon Opp Creation</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>integration@00d28000001o74seac.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kharla1017@myownsandbox.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>loginas@yahoo.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>kharlaortega21@gmail.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Email_Notification_for_New_Opp</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Prospecting</fullName>
+        <description>Everytime that Opportunity is created</description>
+        <field>StageName</field>
+        <literalValue>Prospecting</literalValue>
+        <name>Change Stage to Prospecting</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Stage</fullName>
+        <field>StageName</field>
+        <literalValue>Prospecting</literalValue>
+        <name>Update Stage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Stage_Analysis</fullName>
+        <field>StageName</field>
+        <literalValue>Needs Analysis</literalValue>
+        <name>Update Stage_Analysis</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_to_Reject</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Update to Reject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Change Opp Stage upon Creation For APAC</fullName>
+        <actions>
+            <name>Notify_user_for_new_Opp_created</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Change_Stage_to_Prospecting</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Follow_this_Opportunity</name>
+            <type>Task</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.Region__c</field>
+            <operation>equals</operation>
+            <value>APAC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Type</field>
+            <operation>equals</operation>
+            <value>New Customer</value>
+        </criteriaItems>
+        <description>This workflow will update the Opportunity record Stage field into Prospecting during creation</description>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Followup_for_created_Opp</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Opportunity.CreatedDate</offsetFromField>
+            <timeLength>7</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Update Stage %09Prospecting upon Creation</fullName>
+        <actions>
+            <name>Send_Email_Notif_upon_Opp_Creation</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_Stage</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>New_Task_for_New_Opportunity</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.Region__c</field>
+            <operation>equals</operation>
+            <value>APAC,NA,LATAM,EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Type</field>
+            <operation>equals</operation>
+            <value>New Customer</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Follow_this_Opportunity</fullName>
+        <assignedTo>kharla1017@myownsandbox.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>7</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Opportunity.CloseDate</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Follow this Opportunity</subject>
+    </tasks>
+    <tasks>
+        <fullName>New_Task_for_New_Opportunity</fullName>
+        <assignedTo>kharla1017@myownsandbox.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>2</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Opportunity.CloseDate</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>New Task for New Opportunity</subject>
+    </tasks>
+</Workflow>

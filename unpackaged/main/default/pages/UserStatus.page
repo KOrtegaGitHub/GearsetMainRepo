@@ -1,0 +1,20 @@
+<apex:page sidebar="false">
+   <apex:pageBlock title="User Status">
+    	<apex:pageBlockSection columns="1">
+            	{! 'Ms. ' & $User.FirstName & ' ' & $User.LastName} 
+            	{! IF($User.IsActive, $User.Email,"Inactive")}
+       	</apex:pageBlockSection>
+       <apex:pageBlockSection columns="2">
+           		<apex:pageBlockSectionItem >
+           			<p> Date Today : {! TODAY() }</p>
+                    <p>	Date after this Week : {! TODAY() +7 }</p>
+                    <p> A year Today: {! YEAR(TODAY())}</p>
+                    <p> Tomorrow's date : {! DAY(TODAY() + 1)}</p>
+                    <p> Find the Maximum number : {! MAX(3,5,3,14,2,33,5) }</p>
+                    <p> The square root of 81 is : {! SQRT(81)}</p>
+                    <p> Is it true : {! IF(CONTAINS('salesforce.com','com'),"TRUE","FALSE")}</p>
+					<p> Date Today is :{! IF(DAY(TODAY()) < 15,'Before 15th day','After !5th Day')}</p>
+           		</apex:pageBlockSectionItem>
+       </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

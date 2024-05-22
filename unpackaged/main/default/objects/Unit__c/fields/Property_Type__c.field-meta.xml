@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Property_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Property Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Studio</fullName>
+                <default>false</default>
+                <label>Studio</label>
+            </value>
+            <value>
+                <fullName>1 Bedroom</fullName>
+                <default>false</default>
+                <label>1 Bedroom</label>
+            </value>
+            <value>
+                <fullName>1 Bedroom + Study</fullName>
+                <default>false</default>
+                <label>1 Bedroom + Study</label>
+            </value>
+            <value>
+                <fullName>2 Bedrooms</fullName>
+                <default>false</default>
+                <label>2 Bedrooms</label>
+            </value>
+            <value>
+                <fullName>2 Bedrooms + Study</fullName>
+                <default>false</default>
+                <label>2 Bedrooms + Study</label>
+            </value>
+            <value>
+                <fullName>3 Bedrooms</fullName>
+                <default>false</default>
+                <label>3 Bedrooms</label>
+            </value>
+            <value>
+                <fullName>3 Bedrooms + Study</fullName>
+                <default>false</default>
+                <label>3 Bedrooms + Study</label>
+            </value>
+            <value>
+                <fullName>4 Bedrooms</fullName>
+                <default>false</default>
+                <label>4 Bedrooms</label>
+            </value>
+            <value>
+                <fullName>4 Bedrooms + Study</fullName>
+                <default>false</default>
+                <label>4 Bedrooms + Study</label>
+            </value>
+            <value>
+                <fullName>Terrace</fullName>
+                <default>false</default>
+                <label>Terrace</label>
+            </value>
+            <value>
+                <fullName>Penthouse</fullName>
+                <default>false</default>
+                <label>Penthouse</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

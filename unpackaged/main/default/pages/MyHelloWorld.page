@@ -1,0 +1,128 @@
+<apex:page standardController="Account" sidebar="false" extensions="mySampleExtension" >
+
+    <!--
+    <apex:detail subject="{!account.Id}" relatedList="false" title="true" rendered="false"/>
+    <style>
+            .body{
+                font-family:'Arial Unicode MS';
+            }
+    </style>
+       
+
+    <apex:image url="{!$Resource.HelloKoala}" width="450" height="100"/>
+
+    <h1>Congratulation</h1>
+    <p>Hello Panda :) </p>
+    -->
+    <!-- 
+    <apex:form >
+        <apex:pageBlock id="block1" title="My Content" mode="edit">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!save}" value="Save" />
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="MyContent Section" columns="2">
+               
+                <apex:inputField value="{!Account.name}"/>
+                <apex:inputField value="{!Account.site}"/>
+                <apex:inputField value="{!Account.type}"/>
+                <apex:inputField value="{!Account.accountNumber}"/>
+                
+             </apex:pageBlockSection>  
+      </apex:pageBlock>
+     
+    </apex:form> 
+    -->   
+    <!-- pageBlockSectionItem Sample Code
+     <apex:form >
+        <apex:pageBlock id="block1" title="My Content" mode="edit">
+        
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!save}" value="Save" />
+            </apex:pageBlockButtons>
+            
+                <apex:pageBlockSectionItem >
+                
+                    <apex:outputLabel value="Account Name" for="account_name"  />
+                   
+                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                    <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+                    
+                    <apex:inputText value="{!Account.name}" id="account_name" />
+                  </apex:outputPanel>
+                  
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel value="Account Site" for="account_site" />
+                    <apex:inputText value="{!Account.site}" id="account_site" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Account Type" for="account_type" />
+                    <apex:inputText value="{!Account.type}" id="account_type" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Account Number" for="account_number" />
+                    <apex:inputText value="{!Account.accountNumber}" id="account_number" />
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+         
+         </apex:pageBlock>
+         
+       </apex:form> -->
+       
+      <!--
+      
+      <apex:pageBlockTable value="{!account.Contacts}" var="item">
+            
+                <apex:column value="{!item.name}" />
+                <apex:column value="{!item.accountid}"/>
+                <apex:column value="{!item.lastname}"/>
+                
+            </apex:pageBlockTable>
+             -->
+          <!-- <script> twistSection(document.getElementById('{!$Component.block1.section1}')) </script> -->
+          
+    <!--
+    <apex:pageBlock title="Contacts">
+    
+        <apex:dataTable value="{!account.Contacts}" var="contact" cellpadding="4" border="1">
+            <apex:column >
+                <apex:facet name="header">Name</apex:facet> {!contact.Name}
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Phone</apex:facet> {!contact.Phone}
+            </apex:column>
+        </apex:dataTable>
+        
+    </apex:pageBlock>
+    
+    {!greeting} <p/>&nbsp;&nbsp;&nbsp;
+    {!greeting2} <p/>&nbsp;&nbsp;&nbsp;
+    -->
+  
+
+    
+    <apex:form >
+        <apex:message />
+        <apex:pageBlock title="Account Info">
+             <apex:pageBlockSection >
+                <apex:inputfield value="{!account.name}"/> <p/> &nbsp;&nbsp;&nbsp;
+            
+             </apex:pageBlockSection>
+             <apex:pageBlockButtons >
+                 <apex:commandButton id="save" value="Save" action="{!updateAccount}" reRender="opTestPanel"/>
+             </apex:pageBlockButtons>
+        
+            <apex:outputPanel id="opTestPanel">
+            <apex:outputText value="{!testStrValue}"></apex:outputText>
+            </apex:outputPanel>
+         </apex:pageBlock>
+    </apex:form>
+   
+
+</apex:page>

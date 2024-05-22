@@ -1,0 +1,92 @@
+<!--
+@description - NewAcctAndContact
+@author Kharla Haldos
+@date  July 13, 2016
+@history Kharla Haldos July 14, 2016 -  VF page newAccountContactExt
+-->
+<apex:page standardController="Account" sidebar="false" tabStyle="Account"  extensions="newAccountContactExt">
+<apex:sectionHeader title="Account and Contact" subtitle="Account and Contact"/>
+    
+    <apex:form >
+  
+            <div align="Center">
+                     <apex:commandButton action="{!saveNewAccCon}" value="Save" title="Save"/>&nbsp;
+                     <apex:commandButton action="{!Cancel}" value="Cancel" title="Cancel"/>
+            </div>
+                
+     <apex:pageBlock mode="edit" > &nbsp;&nbsp;        
+            <apex:pageBlockSection columns="2" title="Account Information">
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel value="Account Owner" for="account_owner" />
+                    <apex:outputLabel value="{!currentUser}" id="account_owner" />
+                </apex:pageBlockSectionItem>
+
+               <apex:inputField value="{!newAcc.type}" id="AccId" />
+               <apex:inputField value="{!newAcc.Name}" id="AccName"/>
+               <apex:inputField value="{!newAcc.Phone}" id="AccPhone"/>
+               <apex:inputField value="{!newAcc.ParentId}" id="AccParentid"/>
+               <apex:inputField value="{!newAcc.Fax}" id="AccFax"/>
+               <apex:inputField value="{!newAcc.AccountNumber}" id="AccNum"/>
+               <apex:inputField value="{!newAcc.Website}" id="AccWeb"/>
+            </apex:pageBlockSection>
+      
+            <apex:pageBlockSection title="Address Information">
+
+               <apex:inputField value="{!newAcc.BillingStreet}" id="AccBillStr"/>
+               <apex:inputField value="{!newAcc.ShippingStreet}" id="AccShiStr"/>
+               <apex:inputField value="{!newAcc.BillingCity}" id="AccBillCity"/>
+               <apex:inputField value="{!newAcc.ShippingCity}" id="AccShiCity"/>
+               <apex:inputField value="{!newAcc.BillingState}" id="AccBillState"/>
+               <apex:inputField value="{!newAcc.ShippingState}" id="AccShiState"/>
+               <apex:inputField value="{!newAcc.BillingPostalCode}" id="AccBillPCode"/>
+               <apex:inputField value="{!newAcc.ShippingPostalCode}" id="AccShipPCode"/>
+               <apex:inputField value="{!newAcc.BillingCountry}" id="AccBillCtry"/>
+               <apex:inputField value="{!newAcc.ShippingCountry}" id="AccShiCtry"/>
+            </apex:pageBlockSection>
+            
+      </apex:pageBlock>  
+      
+      <apex:pageBlock mode="edit" tabStyle="Contact">
+            <apex:pageBlockSection title="Subscriber Information">
+               
+               <apex:repeat value="{!newCon}" var="newCon1">
+                   <apex:inputField value="{!newCon1.FirstName}" id="ConFName"/>
+                   <apex:inputField value="{!newCon1.Phone}" id="ConPhone"/>
+                   <apex:inputField value="{!newCon1.LastName}" id="ConLName"/>
+                   <apex:inputField value="{!newCon1.MobilePhone}" id="ConMPhone"/>
+                   <apex:inputField value="{!newCon1.Title}" id="ConTitle"/>
+                   <apex:inputField value="{!newCon1.Fax}" id="ConFax"/>
+                   <apex:inputField value="{!newCon1.Department}" id="ConDept"/>
+                   
+                   <apex:pageBlockSectionItem >
+                
+                    <apex:outputLabel value="Email" for="con_email"  />
+                    
+                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                    <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+                    
+                    <apex:inputText value="{!newCon1.Email}" id="con_email" />
+                  </apex:outputPanel>
+                  
+                </apex:pageBlockSectionItem>
+                
+               </apex:repeat> 
+            
+            </apex:pageBlockSection>
+            
+     </apex:pageBlock>
+         
+         <div align="Center">
+               <apex:commandButton action="{!saveNewAccCon}" value="Save" title="Save"/>
+               <apex:commandButton action="{!Cancel}" value="Cancel" title="Cancel"/>
+         </div>
+         
+         <!-- Debugging Purposes        
+         <apex:outputPanel id="opTestPanel">
+         <apex:outputText value="{!testStrValue}">Test: </apex:outputText>
+         </apex:outputPanel>-->
+         
+  </apex:form>
+     
+</apex:page>

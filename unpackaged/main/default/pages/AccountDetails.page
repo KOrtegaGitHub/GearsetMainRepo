@@ -1,0 +1,81 @@
+<apex:page controller="AccountDetails">
+
+
+
+<apex:form >
+
+<script>
+
+function callControllerMethod() {
+
+    Visualforce.remoting.Manager.invokeAction(
+
+          '{!$RemoteAction.AccountDetails.fetchRecords}',
+
+          function(result, event){
+
+              if (event.status) {
+
+                  alert(result);
+
+              } else if (event.type === 'exception') {
+
+                  alert(event.message);
+
+              }
+
+          }, {escape: true}
+
+      );
+
+  }
+
+</script>
+
+<apex:pageblock title="AccountDetails" id="camps_list">
+
+<table style="width: 100%"><tr>
+
+<td>
+
+        <apex:outputLabel value="Account Name:"/>
+
+        <apex:selectList value="{!filterid}" size="1" onchange="callControllerMethod()">
+
+        <apex:selectOptions value="{!AccountList}"></apex:selectOptions>
+
+        </apex:selectList>
+
+</td>
+
+<td>
+
+No Of Records Displayed:
+
+<apex:selectList value="{! PageSize }" size="1" id="sl">
+
+  <apex:selectOption itemValue="5" itemLabel="5"/>
+
+  <apex:selectOption itemValue="20" itemLabel="20"/>
+
+  <apex:actionSupport event="onchange" reRender="contacts_list"/>
+
+ </apex:selectList>
+
+ </td>
+
+ </tr>
+
+</table>
+
+</apex:pageBlock>
+
+<apex:pageBlock >
+
+<h1>AccountRelated List records</h1>
+
+</apex:pageblock>
+
+</apex:form>
+
+  </apex:page>

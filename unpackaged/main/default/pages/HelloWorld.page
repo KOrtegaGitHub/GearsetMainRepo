@@ -1,0 +1,22 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="A Block Title">
+    	<apex:pageBlockSection title="Section Title">
+            A sample inside block section
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="New Section">
+            <apex:pageBlockSectionItem >
+				xx
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+           Another section reference
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <h1>
+        My Hellow world Page!!!
+    </h1>
+    <p>
+        This is my Come back for Codings :)
+    </p>
+</apex:page>

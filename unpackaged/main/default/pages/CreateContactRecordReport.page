@@ -1,0 +1,8 @@
+<!--
+    Author        : Accenture Cloud First Team (Carla Haldos)
+    Date Created  : 31/Aug/2016
+    Description   : VF Page invoked by "Create Contact Record Report"
+-->
+<apex:page standardController="Case" extensions="CaseCreateReportController"
+    id="createContactReport" action="{!urlFor($Action.Case.CloneAsChild, Case.Id)}">
+</apex:page>

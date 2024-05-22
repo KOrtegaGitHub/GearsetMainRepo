@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    <layouts>
+        <layout>Subcription (Recipient)</layout>
+        <sections>
+            <label>
+                <!-- Custom Links -->
+            </label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Subscription (Subscriber)</layout>
+        <sections>
+            <label>
+                <!-- Custom Links -->
+            </label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Subscription Layout</layout>
+        <sections>
+            <label>
+                <!-- Custom Links -->
+            </label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label>
+            <!-- Recipient -->
+        </label>
+        <name>Recipient</name>
+    </recordTypes>
+    <recordTypes>
+        <label>
+            <!-- Subscriber -->
+        </label>
+        <name>Subscriber</name>
+    </recordTypes>
+    <webLinks>
+        <label>
+            <!-- New_Subscription -->
+        </label>
+        <name>New_Subscription</name>
+    </webLinks>
+</CustomObjectTranslation>

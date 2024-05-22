@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Custom_Button</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>New Custom Button</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>function testCloseTab() {
+            //First find the ID of the current primary tab to close it
+            sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+        }
+        
+        var closeSubtab = function closeSubtab(result) {
+            //Now that we have the primary tab ID, we can close it
+            var tabId = result.id;
+            sforce.console.closeTab(tabId);
+        };</url>
+</WebLink>
